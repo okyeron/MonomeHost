@@ -59,7 +59,7 @@ MonomeController::MonomeController(USBHost &usb) :
   ring_map_(  &MonomeController::ring_map_dummy ),
   refresh_(  &MonomeController::refresh_dummy ),
   frame_dirty_(0),
-  ftdi_(usb, this),
+//  ftdi_(usb, this),
   connect_(&ConnectCallbackDummy),
   grid_key_(&GridKeyCallbackDummy),
   ring_delta_(&RingDeltaCallbackDummy),
@@ -75,7 +75,8 @@ MonomeController::~MonomeController()
 }
 
 
-// determine if FTDI string descriptors match monome device pattern
+// determine if USB string descriptors match monome device pattern
+
 uint8_t MonomeController::CheckDeviceDesc(char* mstr, char* pstr, char* sstr) { 
   char buf[16];
   uint8_t matchMan = 0;
@@ -367,16 +368,20 @@ uint8_t MonomeController::setup_mext(void)
 
   while(rx_bytes != 6) {
     delay(1);
-    ftdi_.write(1, &w);  // query  
+    
+    	// WRITE TO CONTROLLER
+//    ftdi_.write(1, &w);  // query  
 
     delay(1);
-    ftdi_.read();
+    	// READ FROM CONTROLLER
+//    ftdi_.read();
 
     delay(1);
-    rx_bytes = ftdi_.rx_bytes();
+//    rx_bytes = ftdi_.rx_bytes();
   }
   
-  prx = ftdi_.rx_buf();
+  	// RECEIVE BUFFER ?
+//  prx = ftdi_.rx_buf();
 
   prx++; // 1st returned byte is 0
   if(*prx == 1) {

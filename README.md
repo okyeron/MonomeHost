@@ -1,2 +1,2 @@
-# MonomeHost
-Aruduino library for hosting Monome devices
+# MonomeHost for Teensy
+Teensy library for hosting Monome devices
