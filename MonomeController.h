@@ -32,6 +32,11 @@
 
   - monome protocol by tehn
   http://monome.org/docs/tech:serial
+  
+  ---
+    
+  Teensy USBHost library
+  https://github.com/PaulStoffregen/USBHost_t36
 
 */
 
